@@ -13,11 +13,12 @@ module.exports = function(grunt) {
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
 
-  grunt.registerMultiTask('filetostring', 'Your task description goes here.', function() {
+  grunt.registerMultiTask('filetostring', 'Convert the contents of a file into a JavaScript string.', function() {
     var path = require('path');
  
     var options = this.options({
       namespace: '',
+      seperator: '',
       trim: true
     });
     var namespaceLn;
@@ -45,7 +46,6 @@ module.exports = function(grunt) {
         // Read file source.
         var file = grunt.file.read(filepath);
         var filename = path.basename(filepath, '.html');
-        
         if (options.trim) {
           var regExpLineFeed = new RegExp('\\r|' + grunt.util.linefeed, 'gm');
           var regExpSpaceStart = new RegExp('^\\s+|\\^t+', 'gm');
@@ -53,8 +53,8 @@ module.exports = function(grunt) {
           // clear white space from the begining of each line, the end and remove any carriage returns or linefeeds
           file = file.replace(regExpSpaceStart, '').replace(regExpSpaceEnd, '').replace(regExpLineFeed, '');
         }
-        var src = namespaceLn + filename + ' = ' + JSON.stringify(file) + ';';
- 
+
+        var src = namespaceLn + filename + ' = ' + JSON.stringify(file) + ';'; 
         return src;
       }).join(grunt.util.normalizelf(grunt.util.linefeed));
  
