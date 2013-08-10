@@ -1,0 +1,6 @@
+line 1
+	line 2 with tab at begining and end	
+     line 3 with 5 spaces at the begining and end     
+ 	 line 3 with space-tab-space at the begining and end 	 
+
+^ Empty line

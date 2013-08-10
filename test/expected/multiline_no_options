@@ -1,0 +1,1 @@
+var multiline = "line 1line 2 with tab at begining and endline 3 with 5 spaces at the begining and endline 3 with space-tab-space at the begining and end^ Empty line";

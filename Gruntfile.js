@@ -27,25 +27,8 @@ module.exports = function(grunt) {
     clean: {
       tests: ['tmp'],
     },
-
     // Configuration to be run (and then tested).
-    filetostring: {
-      default_options: {
-        options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
-      },
-      custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!',
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123'],
-        },
-      },
+    filetostring: {      
       trim_options: {
         options: {
           trim: true
@@ -60,6 +43,11 @@ module.exports = function(grunt) {
         },
         files: {
            'tmp/notrim_options': ['test/fixtures/whitespace']
+        }
+      },
+      no_options: {        
+        files: {
+           'tmp/no_options': ['test/fixtures/multiline']
         }
       }
     },
