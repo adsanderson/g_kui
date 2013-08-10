@@ -29,7 +29,7 @@ module.exports = function(grunt) {
     },
 
     // Configuration to be run (and then tested).
-    Kendo_UI_Template: {
+    filetostring: {
       default_options: {
         options: {
         },
@@ -46,6 +46,22 @@ module.exports = function(grunt) {
           'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123'],
         },
       },
+      trim_options: {
+        options: {
+          trim: true
+        },
+        files: {
+           'tmp/trim_options': ['test/fixtures/whitespace']
+        }
+      },
+      notrim_options: {
+        options: {
+          trim: false
+        },
+        files: {
+           'tmp/notrim_options': ['test/fixtures/whitespace']
+        }
+      }
     },
 
     // Unit tests.
@@ -65,7 +81,7 @@ module.exports = function(grunt) {
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'Kendo_UI_Template', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'filetostring', 'nodeunit']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
