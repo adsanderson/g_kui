@@ -24,6 +24,7 @@ module.exports = function(grunt) {
     var namespaceLn;
     var header;
  
+    // build header based on name space
     if (options.namespace !== '') {
       namespaceLn = options.namespace + '.';
       header = 'var ' + options.namespace + ' = ' + options.namespace + ' || {};' + grunt.util.linefeed;
@@ -51,7 +52,7 @@ module.exports = function(grunt) {
           var regExpSpaceStart = new RegExp('^\\s+|\\^t+', 'gm');
           var regExpSpaceEnd = new RegExp('\\s+$|\\t+$', 'gm'); 
           // clear white space from the begining of each line, the end and remove any carriage returns or linefeeds
-          file = file.replace(regExpSpaceStart, '').replace(regExpSpaceEnd, '').replace(regExpLineFeed, '');
+          file = file.replace(regExpSpaceStart, '').replace(regExpSpaceEnd, '').replace(regExpLineFeed, options.seperator);
         }
 
         var src = namespaceLn + filename + ' = ' + JSON.stringify(file) + ';'; 

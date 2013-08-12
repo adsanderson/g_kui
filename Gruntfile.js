@@ -49,6 +49,14 @@ module.exports = function(grunt) {
         files: {
            'tmp/no_options': ['test/fixtures/multiline']
         }
+      },
+      seperator_options: {  
+        options: {
+          seperator: ', '
+        },      
+        files: {
+           'tmp/seperator_options': ['test/fixtures/multiline']
+        }
       }
     },
 
