@@ -37,6 +37,24 @@ grunt.initConfig({
 
 ### Options
 
+#### options.namespace
+Type: `String`
+Default value: ''
+
+A string that is used to define a namespace. The output will be either single variables or properties of the namespace.
+
+eg.
+default
+```js
+var file = '';
+var file2 = '';
+```
+namespace: 'NS'
+```js
+NS = NS || {};
+NS.file = '';
+NS.file2 = '';
+```
 #### options.separator
 Type: `String`
 Default value: `',  '`
@@ -87,3 +105,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 _(Nothing yet)_
+
+## Some testing on my part
