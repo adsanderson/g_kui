@@ -1,6 +1,6 @@
 /*
  * File To JavaScript String
- * 
+ *
  *
  * Copyright (c) 2013 Adam Sanderson
  * Licensed under the MIT license.
@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('filetostring', 'Convert the contents of a file into a JavaScript string.', function() {
     var path = require('path');
- 
+
     var options = this.options({
       namespace: '',
       seperator: '',
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
     });
     var namespaceLn;
     var header;
- 
+
     // build header based on name space
     if (options.namespace !== '') {
       namespaceLn = options.namespace + '.';
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
       namespaceLn = 'var ';
       header = '';
     }
- 
+
     this.files.forEach(function(f) {
       // Concat namespace + specified files.
       var src = header + f.src.filter(function(filepath) {
@@ -46,25 +46,25 @@ module.exports = function(grunt) {
       }).map(function(filepath) {
         // Read file source.
         var file = grunt.file.read(filepath);
-        var filename = path.basename(filepath, '.html');
+        var filename = path.basename(filepath, '').split('.')[0];
         if (options.trim) {
           var regExpLineFeed = new RegExp('\\r|' + grunt.util.linefeed, 'gm');
           var regExpSpaceStart = new RegExp('^\\s+|\\^t+', 'gm');
-          var regExpSpaceEnd = new RegExp('\\s+$|\\t+$', 'gm'); 
+          var regExpSpaceEnd = new RegExp('\\s+$|\\t+$', 'gm');
           // clear white space from the begining of each line, the end and remove any carriage returns or linefeeds
           file = file.replace(regExpSpaceStart, '').replace(regExpSpaceEnd, '').replace(regExpLineFeed, options.seperator);
         }
 
-        var src = namespaceLn + filename + ' = ' + JSON.stringify(file) + ';'; 
+        var src = namespaceLn + filename + ' = ' + JSON.stringify(file) + ';';
         return src;
       }).join(grunt.util.normalizelf(grunt.util.linefeed));
- 
+
       // Write the destination file.
       grunt.file.write(f.dest, src);
- 
+
       // Print a success message.
       grunt.log.writeln('File "' + f.dest + '" created.');
- 
+
     });
   });
   //   // Merge task-specific and/or target-specific options with these defaults.
