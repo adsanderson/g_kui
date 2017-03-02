@@ -1,5 +1,7 @@
 # Kendo-UI-Template
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/adsanderson/g_kui.svg)](https://greenkeeper.io/)
+
 > Compile external Kendo UI Template files to js file.
 
 ## Getting Started
